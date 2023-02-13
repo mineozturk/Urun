@@ -1,0 +1,75 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Urun
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/Urun]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        [
+           {
+                "UrunListesi": [
+                    {
+                        "ID": 1,
+                        "UrunAdi": "Kitap",
+                        "Kodu": "KTP",
+                        "Fiyatı":"100",
+                        "Birimi":"TL",
+                        "StokAdedi":"20"
+                        
+                    }, 
+                    {
+                        "ID": 2,
+                         "UrunAdi": "Kalem",
+                        "Kodu": "KLM",
+                        "Fiyatı":"25",
+                        "Birimi":"TL",
+                        "StokAdedi":"2000"
+                        
+                    },
+                    {
+                        "ID": 3,
+                        "UrunAdi": "Silgi",
+                        "Kodu": "SLG",
+                        "Fiyatı":"10",
+                        "Birimi":"TL",
+                        "StokAdedi":"3000"
+                    }
+                ]
+            }
+        ]
+
+### Yeni Urun [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            
+                        "UrunAdi": "Silgi",
+                        "Kodu": "SLG",
+                        "Fiyatı":"10",
+                        "Birimi":"TL",
+                        "StokAdedi":"3000"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /Urun/2
+
+    + Body
+            {
+                 "result":"Success",
+                 "message":"Kayıt işleminiz başarıyla yapılmıştır.",
+            }
